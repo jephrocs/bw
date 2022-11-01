@@ -25,6 +25,7 @@ function hashPassword(plaintextPassword) {
 
 
 function comparePassword(plaintextPassword, hashPassword) {
+    console.log(plaintextPassword, " ", hashPassword)
   return bcrypt.compareSync(plaintextPassword, hashPassword);
 }
 
@@ -51,14 +52,14 @@ export const signUp = async (options, res)=> {
         u.name.last,
         u.company,
         u.email,
-        hashPassword(u.password).toString(),
-        salty.toString(),
+       hashPassword(u.password),
+       salty.toString(),
         u.phone,
         u.address
      )
     db.data.users.push(newUser)
     await db.write();
-    console.log('newuser',newUser);
+    console.log('New User:',newUser);
     res.json(newUser);
   }
 }
@@ -69,46 +70,47 @@ export const configurePassport = function(passport) {
 
   // only the user ID is serialized and added to the session
   passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user._id);
   });
 
   // for every request, the id is used to find the user, which will be restored
   // to req.user.
-  passport.deserializeUser(function(id, done) {
+  passport.deserializeUser(function(_id, done) {
     // find user in database
-    var user = db.get('users').find({id: id}).value()
-
+   // var user = db.get('users').find({_id: _id}).value()
+    const user = getConnection().data.users.find(user=>user._id===_id );
     if(!user) {
       done({ message: 'Invalid credentials.' }, null);
     } else {
       // the object is what will be available for 'request.user'
-      done(null, {id: user.id, username: user.username})
+      done(null, {_id: user._id, email: user.email})
     }
   });
 
   // configures how to autheticate a user when they log in.
 
   // LocalStrategy uses username / password in the database for authentication.
-  passport.use(new LocalStrategy(
-    function(username, password, done) {
+  passport.use(new LocalStrategy({ // or whatever you want to use
+    usernameField: 'email',    // define the parameter in req.body that passport can use as username and password
+    passwordField: 'password'
+  },
+    function( emailz, passwordz, done) {
       // look for user in database
-      var user = db.get('users').find({ username: username }).value()
-
-      // if user not found, return error
-      if(!user) {
-        return done(null, false, { message: 'Invalid username & password.' });
+      const db = getConnection();
+      
+      var foundUser = db.data.users.find(user=>user.email == emailz)
+      if(!foundUser) {
+        return done(null, false, { message: 'Invalid Email' });
       }
 
       // check if password matches
-      var passwordsMatch = comparePassword(password, user.password);
-      // if passowrd don't match, return error
+      var passwordsMatch = comparePassword(passwordz, foundUser.password);
       if(!passwordsMatch) {
-        return done(null, false, { message: 'Invalid username & password.' });
+        return done(null, false, { message: 'Invalid Password.' });
       }
 
       //else, if username and password match, return the user
-      return done(null, user)
+      return done(null, foundUser)
     }
-  ));
-}
+))}
 

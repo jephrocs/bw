@@ -256,6 +256,168 @@
       "salt": "$2a$10$xLZWPt12KLpgVn3um.k9SO",
       "phone": "132-422-3333",
       "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "OZsVvI6yX",
+      "guid": "GU0-7QtKhkNXUH",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "a@a.com",
+      "password": "$2a$10$93.WtwkvKrlQv6iAAW.czutgoB1H.Xnyjh.8p1/H0xvOJfY5g/xye",
+      "salt": "$2a$10$93.WtwkvKrlQv6iAAW.czu",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "VZQ2tnhOR",
+      "guid": "GU0-xm2jLg0DDT",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "a@b.com",
+      "password": "$2a$10$OI8aL8yFEm12sqRWN5zr1.mRKSS7jG4zTuegZHRPwdHxBS95QQHLS",
+      "salt": "$2a$10$OI8aL8yFEm12sqRWN5zr1.",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "0Y2Hzcevu",
+      "guid": "GU0-mGR4JpfyZU",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "jeff@jeff.com",
+      "password": "$2a$10$tsa124rg/qr23CHzChaj7OrRcrhaFWH5bfhsB.2PcdNsVTuPdCReG",
+      "salt": "$2a$10$tsa124rg/qr23CHzChaj7O",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "8XKX0Cpka",
+      "guid": "GU0-3A-cmup8bj",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "asdf",
+      "password": "$2a$10$9AXjsmrxwSYjrM29XBY9S.Z92EVbuNJf9B1y5S4jXZmu6RyWqaTuK",
+      "salt": "$2a$10$9AXjsmrxwSYjrM29XBY9S.",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "wNR-DcWLP",
+      "guid": "GU0-DP_2dOTF-q",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "qwerty",
+      "password": "$2a$10$pNdMMqN3AC4gO.PCIpSxdO7NNauGglFeZmFfpw/D3f8gRVuhnleGm",
+      "salt": "$2a$10$pNdMMqN3AC4gO.PCIpSxdO",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "W6rNIUcHC",
+      "guid": "GU0-9y-jZWiLXn",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "qwery",
+      "password": "$2a$10$KrOZLD2.YlhuSS7RlUchYuxF.V2CocftYiXFxP3Z0dqHlYQYTe3oS",
+      "salt": "$2a$10$KrOZLD2.YlhuSS7RlUchYu",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "NWXeKgJhf",
+      "guid": "GU0-wfE36akhq6",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "test2",
+      "password": "",
+      "salt": " salty.toString()",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "DYVngB5MY",
+      "guid": "GU0-gemqxsfA95",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "test",
+      "password": "123",
+      "salt": " salty.toString()",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
+    },
+    {
+      "_id": "_WE1w9Bba",
+      "guid": "GU0-2V7BnLYGHr",
+      "isActive": false,
+      "balance": "$1,000,000",
+      "age": 51,
+      "eyeColor": "red",
+      "name": {
+        "first": "Test",
+        "last": "HandBobos"
+      },
+      "company": "McDonalds",
+      "email": "test9999",
+      "password": "$2a$10$7K2MFqGOG9DTOEX4Ahy1ou2hDaNiS61LgqQzxrmTSFegqq7v9tYAG",
+      "salt": "$2a$10$7K2MFqGOG9DTOEX4Ahy1ou",
+      "phone": "132-422-3333",
+      "address": "3122 efad ln lakewood ca 90703"
     }
   ]
 }
