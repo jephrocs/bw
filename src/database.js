@@ -8,19 +8,13 @@ let db;
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export async function createConnection(){
-    
 // File path
 const file = join(__dirname, '../db.json')
 // Configure lowdb to write to JSONFile
 const adapter = new JSONFile(file);
 db = new Low(adapter);
-
-
 await db.read();
-
-
 db.data ||= { users: [] };
-
 await db.write();
 }
 

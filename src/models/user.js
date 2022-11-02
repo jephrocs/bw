@@ -18,21 +18,4 @@ export class User {
         this.phone= phone;
         this.address=address;
     }
-
   }
-
-//   foundUser = new User( 
-//     '',
-//     '',
-//         isActive,
-//         balance,
-//        picture,
-//         age,
-//         eyeColor,
-//         name,
-//         company,
-//     '',
-//         '',
-//        '',
-//        phone,
-//         address,)

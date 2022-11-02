@@ -1,47 +1,12 @@
 import {getConnection} from '../database.js';
-import shortid from 'shortid'
+import { addUser, getUser } from '../repos/users.js';
 
-export const getAllUsers = (req, res)=>{
-    try {
-        const users = getConnection().data.users;
-        res.json(users);
-    } catch (error) {
-        return res.status(500).send({message:error.message});
-    }}
-
-export const getUser = (req, res)=>{
-    try {
-        const foundUser = getConnection().data.users.find(user=>user._id===req.params.id );
-        if (!foundUser) return res.sendStatus(404);
-        res.json(foundUser);
-    } catch (error) {
-        return res.status(500).send({message:error.message});
-    }
-}
-
-export const addUser = async (req, res)=>{
-    const newUser = {
-        id: shortid.generate(),
-        name:req.body.name
-    }
-    try {
-        if(!req.body.name){
-            return res.status(405).send({message:"no name entered"})
-        }
-        const db = getConnection();
-        db.data.users.push(newUser);
-        await db.write();
-        res.json(newUser);
-    } catch (error) {
-        return res.status(500).send({message:error.message});
-    }
-}
 
 export const updateUser = async (req, res)=>{
     const { isActive,age,eyeColor, balance,company,phone,address,name } = req.body;
     try {
       const db = getConnection();
-      const foundUser = db.data.users.find((user) => user._id === req.params.id);
+      const foundUser = getUser(req.params.id);
       if (!foundUser) return res.sendStatus(404);
 
 //write a function for every property for this for validation
@@ -74,7 +39,7 @@ export const deleteUser = async (req, res)=>{
   const db = getConnection();
   const foundUser = db.data.users.find((user) => user._id === req.params.id);
   if (!foundUser) return res.sendStatus(404);
-
+  
   const newUsers = db.data.users.filter((user) => user._id !== req.params.id);
   db.data.users = newUsers;
   await db.write();
@@ -82,4 +47,29 @@ export const deleteUser = async (req, res)=>{
   return res.json(foundUser);
 }
 
-const db = getConnection();
+export const getUserHandler = (req, res)=>{
+    try {
+        const foundUser = getConnection().data.users.find(user=>user._id===req.params.id );
+        if (!foundUser) return res.sendStatus(404);
+        res.json(foundUser);
+    } catch (error) {
+        return res.status(500).send({message:error.message});
+    }
+}
+
+export const getAllUsers = (req, res)=>{
+    try {
+        const users = getConnection().data.users;
+        res.json(users);
+    } catch (error) {
+        return res.status(500).send({message:error.message});
+    }}
+
+export const addUserHandler = async ( req, res)=>{
+    try {
+        addUser(user)
+        res.json(newUser);
+    } catch (error) {
+        return res.status(500).send({message:error.message});
+    }
+}

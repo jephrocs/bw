@@ -1,14 +1,12 @@
-import {Router} from "express";
-import { validsignup } from "../controllers/login.controller.js";
+import {json, Router} from "express";
+import { validsignup,isLocalAuthenticated } from "../handlers/login.handler.js";
 import passport from "passport";
-import {configurePassport} from '../controllers/authService.js';
-
+import {configurePassport} from '../services/login.js';
 import { Strategy as strategy} from 'passport-local';
 const router = Router()
 passport.use('password', strategy);
 configurePassport(passport);
-// var signup_view_path = path.join('auth', 'signup');
-// var login_view_path = path.join('auth', 'login');
+
 
 // // display signup page only if user is not logged in
 // router.get('/signup', isLoggedOut(), function(req, res) {
@@ -31,21 +29,6 @@ router.get('/login', function(req, res, next) {
 
 
 // peform login
-
-const isLocalAuthenticated = function(req, res, next) {
-    passport.authenticate('local', function(err, user, info) {
-        if (err) { return next(err); } //error exception
-
-        // user will be set to false, if not authenticated
-        if (!user) {
-            res.status(401).json(info); //info contains the error message
-        } else {
-            // if user authenticated maintain the session
-            req.logIn(user, function() {
-res.json({'message':'a winner is you'})            })
-        }    
-    })(req, res, next);
-}
 router.post(
   '/login',
   isLocalAuthenticated
@@ -54,8 +37,7 @@ router.post(
 // logout user
 router.get('/logout', function(req, res) {
   req.logout();
- // req.flash('success', 'You are logged out');
-  res.redirect('/')
+ res.json({"message":"log out sucessful"})
 })
 
 // display profile page if user is logged in
