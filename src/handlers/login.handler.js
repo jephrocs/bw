@@ -6,7 +6,7 @@ import { User } from '../models/user.js';
 configurePassport(passport);
 
 
-export const isLocalAuthenticated = function(req, res, next) {
+export const logIn = function(req, res, next) {
 	passport.authenticate('local', function(err, user, info) {
 		if (err) {
 			return next(err);
@@ -22,7 +22,7 @@ export const isLocalAuthenticated = function(req, res, next) {
 	})(req, res, next);
 }
 
-export const validsignup = (req, res) => {
+export const register = (req, res) => {
 	const u = req.body;
 	if (u.email == "") {
 		res.status(422).json({

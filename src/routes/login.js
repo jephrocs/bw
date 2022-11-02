@@ -1,8 +1,10 @@
-import {json, Router} from "express";
-import { validsignup,isLocalAuthenticated } from "../handlers/login.handler.js";
+import { Router} from "express";
+import { register, logIn } from "../handlers/login.handler.js";
 import passport from "passport";
 import {configurePassport} from '../services/login.js';
 import { Strategy as strategy} from 'passport-local';
+
+
 const router = Router()
 passport.use('password', strategy);
 configurePassport(passport);
@@ -14,7 +16,7 @@ configurePassport(passport);
 // })
 
 // create user
-router.post('/signup', validsignup);
+router.post('/signup', register);
 
 // // display login page  af user is not logged in
 // router.get('/login', isLoggedOut(), function(req, res) {
@@ -29,10 +31,7 @@ router.get('/login', function(req, res, next) {
 
 
 // peform login
-router.post(
-  '/login',
-  isLocalAuthenticated
-)
+router.post('/login', logIn);
 
 // logout user
 router.get('/logout', function(req, res) {

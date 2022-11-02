@@ -476,20 +476,19 @@
     {
       "_id": "gpQyi8Mzv",
       "guid": "GU0-BGj2ZiyAzr",
-      "isActive": false,
+      "isActive": true,
       "balance": "$1,000,000",
-      "age": 51,
-      "eyeColor": "red",
       "name": {
-        "first": "Teadfo",
-        "last": "Edjpafj"
+        "first": "Jeff",
+        "last": "Salads"
       },
-      "company": "McDonalds",
       "email": "J.asdf",
       "password": "$2a$10$yMu2yArGFlP1hBINUwx79Otg9kO.qdK58swcDsn7zymzrLKK0wHP6",
       "salt": "$2a$10$yMu2yArGFlP1hBINUwx79O",
-      "phone": "132-422-3333",
-      "address": "3122 efad ln lakewood ca 90703"
+      "age": 33,
+      "address": "4443 Fine St, city fa 32411",
+      "eyeColor": "green",
+      "company": "Umberella Company"
     },
     {
       "_id": "7Cv6wjilD",
