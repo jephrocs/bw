@@ -16,13 +16,18 @@ function comparePassword(plaintextPassword, hashPassword) {
     return bcrypt.compareSync(plaintextPassword, hashPassword);
 }
 
+const balance = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  
+  });
 export const signUp = async (u, res) => {
     const newUser = new User(
       shortid.generate(),
       "GU0-" + shortid.generate(),
-      u.isActive,
-      u.balance,
-      u.pic,
+      true,
+      balance.format(Math.floor(Math.random() * 10)),
+      'https://placehold.jp/300x300.png',
       u.age,
       u.eyeColor,
       u.name.first,
@@ -36,10 +41,14 @@ export const signUp = async (u, res) => {
   )
     var email = getUserByEmail(u.email);
     if (!!email) {
-        res.json("Email already exists");
+        res.json({"message": "Email Already exists"
+    });
     } else {
         addUser(newUser);
-        res.json(newUser);
+        console.log("Registered USER: ",newUser)
+        
+        res.json({newUser:newUser,message: "Registration Sucessful!"
+        });
     }
 }
 

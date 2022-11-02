@@ -1,37 +1,67 @@
 import {getConnection} from '../database.js';
 import { addUser, getUser, updateUser } from '../repos/users.js';
+import pkg from 'jsonwebtoken';
+const {verify} = pkg;
 
 
 export const updateUserHandler = async (req, res)=>{
-    try {
-      let updatedUser =  req.body;
-      updateUser(req.params.id, updatedUser);
-      res.json(updatedUser);
-    } catch (error) {
-      return res.status(500).send(error.message);
-    }
-}
+    verify(req.token, 'bluewhite', (err)=>{
+        if(err){
+            res.sendStatus(403);
+        }else {
+        try {
+            let updatedUser = req.body;
+            if (updatedUser == {}){
+                    return res.status(500).json({"message":"Request body is blank"});
+                }
+            updateUser(req.params.id, updatedUser);
+            res.json(updatedUser);
+        } catch (error) {
+        return res.status(500).send(error.message);
+        }
+        }
+})}
 
-export const deleteUser = async (req, res)=>{
-const foundUser = getUser(req.params.id);
-  if (!foundUser) return res.sendStatus(404);
-  const newUsers = db.data.users.filter((user) => user._id !== req.params.id);
-  db.data.users = newUsers;
-  await db.write();
-
-  return res.json(foundUser);
-}
 
 export const getUserHandler = (req, res)=>{
-    try {
-        const foundUser = getUser(req.params.id);
-        if (!foundUser) return res.status(404).send({message:"User Not Found"});
-        res.json(foundUser);
-    } catch (error) {
-        return res.status(500).send({message:error.message});
-    }
+    verify(req.token, 'bluewhite', (err)=>{
+        if(err){
+            res.sendStatus(403);
+        }else {
+            try {
+                const foundUser = getUser(req.params.id);
+                if (!foundUser) return res.status(404).send({message:"User Not Found"});
+                res.json(foundUser);
+            } catch (error) {
+                return res.status(500).send({message:error.message});
+            }
+        }
+
+})
+    
 }
 
+//Middleware
+export const verifyToken = (req, res, next)=>{
+    const bearerHeader = req.headers['authorization'];
+    if(typeof bearerHeader !== 'undefined'){
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        req.token = bearerToken;
+        next()
+    }else{
+        res.sendStatus(403)
+        }
+                }
+
+//Not needed
+export const deleteUser = async (req, res)=>{
+    const dUser = getUser(req.params.id);
+      if (!dUser) return res.sendStatus(404);
+        deleteUser(req.params.id)
+    
+      return res.json(dUser);
+    }
 export const getAllUsers = (req, res)=>{
     try {
         const users = getConnection().data.users;
@@ -48,3 +78,4 @@ export const addUserHandler = async ( req, res)=>{
         return res.status(500).send({message:error.message});
     }
 }
+
