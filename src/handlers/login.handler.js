@@ -31,12 +31,11 @@ export const logIn = function(req, res, next) {
 }
 
 export const register = (req, res) => {
-	console.log('registering....',req.body)
 	const u = req.body;
 	if (u.email == "") {
 		res.status(422).json({
 			'message': 'You must have an email'
-		}); //info contains the error message
+		}); 
 	} else {
 		try {
 			const reqUser = new User(

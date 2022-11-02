@@ -19,14 +19,18 @@ export async function addUser (user){
 export async function updateUser(id, updatedUser){
     const db = getConnection(); 
     let uUser = getUser(id)
-    updatedUser.isActive == "" ? uUser.isActive : uUser.isActive = updatedUser.isActive;
+    if (updatedUser.name == undefined){
+        uUser.name
+    }else {
+        !updatedUser.name.first ? uUser.name.first: uUser.name.first = updatedUser.name.first;
+        !updatedUser.name.last ? uUser.name.last: uUser.name.last = updatedUser.name.last;
+    }
+   !updatedUser.isActive ? uUser.isActive : uUser.isActive = updatedUser.isActive;
    !updatedUser.age ? uUser.age : uUser.age = updatedUser.age;
    !updatedUser.picture ? uUser.picture : uUser.picture = updatedUser.picture;
    !updatedUser.eyeColor ? uUser.eyeColor : uUser.eyeColor = updatedUser.eyeColor;
    !updatedUser.phone ? uUser.phone : uUser.phone = updatedUser.phone;
    !updatedUser.company ? uUser.company : uUser.company = updatedUser.company;
-   !updatedUser.name.first ? uUser.name.first: uUser.name.first = updatedUser.name.first;
-   !updatedUser.name.last ? uUser.name.last: uUser.name.last = updatedUser.name.last;
    !updatedUser.address ? uUser.address : uUser.address = updatedUser.address;
     db.data.users.map((user) => (user._id === id ? uUser : user));
     await db.write();

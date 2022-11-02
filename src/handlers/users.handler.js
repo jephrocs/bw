@@ -54,7 +54,9 @@ export const verifyToken = (req, res, next)=>{
         }
                 }
 
-//Not needed
+
+                
+//Not needed (Admin)
 export const deleteUser = async (req, res)=>{
     const dUser = getUser(req.params.id);
       if (!dUser) return res.sendStatus(404);

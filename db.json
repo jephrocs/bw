@@ -24,12 +24,12 @@
       "balance": "$4.00",
       "picture": "https://placehold.jp/300x300.png",
       "age": "23",
-      "eyeColor": "Red",
+      "eyeColor": "purple",
       "name": {
-        "first": "Dave",
-        "last": "Smith"
+        "first": "James",
+        "last": "Hern"
       },
-      "company": "Fresh Prince Co",
+      "company": "McDonalds",
       "email": "willsmith@will.com",
       "password": "$2a$10$bdFAG2GwSP6SDQYWTyYrN.nNe.6HHOMYUyqqcaHmn5V/Wnt93bR6S",
       "salt": "$2a$10$bdFAG2GwSP6SDQYWTyYrN.",

@@ -12,8 +12,7 @@ configurePassport(passport);
 router.post('/signup', register);
 router.post('/login', logIn);
 router.get('/logout', function(req, res) {
-  req.logout();
- res.json({"message":"log out sucessful"})
+  req.logout()
 })
 
 

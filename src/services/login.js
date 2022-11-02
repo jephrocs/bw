@@ -4,6 +4,7 @@ import shortid from 'shortid'
 import { User } from '../models/user.js';
 import { addUser, getUserByEmail, getUser } from '../repos/users.js';
 
+//Variable to save salt
 let salty = '';
 
 function hashPassword(plaintextPassword) {
@@ -16,6 +17,7 @@ function comparePassword(plaintextPassword, hashPassword) {
     return bcrypt.compareSync(plaintextPassword, hashPassword);
 }
 
+//Random Balance generator 
 const balance = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -54,24 +56,17 @@ export const signUp = async (u, res) => {
 
 // configure passport
 export const configurePassport = function(passport) {
-    // Passport serializes and deserializes user instances to and from the session.
-
-    // only the user ID is serialized and added to the session
     passport.serializeUser(function(user, done) {
         done(null, user._id);
     });
 
-    // for every request, the id is used to find the user, which will be restored
-    // to req.user.
     passport.deserializeUser(function(_id, done) {
-        // find user in database
         const user = getUser(_id);
         if (!user) {
             done({
                 message: 'Invalid credentials.'
             }, null);
         } else {
-            // the object is what will be available for 'request.user'
             done(null, {
                 _id: user._id,
                 email: user.email
@@ -85,21 +80,19 @@ export const configurePassport = function(passport) {
             passwordField: 'password'
         },
         function(emailz, passwordz, done) {
-            // look for user in database
             var foundUser = getUserByEmail(emailz);
             if (!foundUser) {
                 return done(null, false, {
                     message: 'Invalid Email'
                 });
             }
-            // check if password matches
             var passwordsMatch = comparePassword(passwordz, foundUser.password);
             if (!passwordsMatch) {
                 return done(null, false, {
                     message: 'Invalid Password.'
                 });
             }
-            //else, if username and password match, return the user
+            //If username and password match, return the user
             return done(null, foundUser)
         }
     ))
