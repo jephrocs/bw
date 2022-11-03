@@ -35,6 +35,25 @@
       "salt": "$2a$10$bdFAG2GwSP6SDQYWTyYrN.",
       "phone": "222-333-2222",
       "address": "3949 Some Rich Place Belair CA "
+    },
+    {
+      "_id": "AjIFbyxWH",
+      "guid": "GU0-mlnUldwP5Y",
+      "isActive": true,
+      "balance": "$9.00",
+      "picture": "https://randomuser.me/api/portraits/lego/3.jpg",
+      "age": "29",
+      "eyeColor": "Brown",
+      "name": {
+        "first": "Jeff",
+        "last": "Conwi"
+      },
+      "company": "Blue White",
+      "email": "jeff@gmail.com",
+      "password": "$2a$10$XvIrIfFoS2q/WQUUjF.8XeFoTP9rbldEfYzbswSVnqwWXY.Pm2MaC",
+      "salt": "$2a$10$XvIrIfFoS2q/WQUUjF.8Xe",
+      "phone": "555-555-5555",
+      "address": "6235 Hungerford st"
     }
   ]
 }

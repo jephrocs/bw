@@ -13,7 +13,7 @@ import Form from "react-validation/build/form";
 
 const Profile = () => {
   const currentUser = AuthService.getCurrentUser();
-  const userID = currentUser.user._id
+
 
   //Modal
   const [show, setShow] = useState(false);
@@ -96,6 +96,7 @@ const Profile = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
+        const userID = currentUser.user._id
       AuthService.update( userID,picture, age, eyeColor, first, last, company, email, password, phone, address).then(
         (response) => {
           alert("User updated Successfully");
@@ -118,8 +119,10 @@ const Profile = () => {
     }
   };
 
+
  
   return (
+    
     <><Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Edit Profile</Modal.Title>
@@ -265,7 +268,15 @@ const Profile = () => {
         </Button>
   
       </Modal.Footer>
-    </Modal><div className="container" style={{ "text-align": "center" }}>
+    </Modal>
+    {!currentUser ?(
+               <h3>            
+               <Link to={"/login"} className="nav-link">
+               Click Here to Log In   please
+               </Link>
+             </h3>
+    ):(
+    <div className="container" style={{ "text-align": "center" }}>
         <header className="jumbotron">
           <Col>
             <h3 className="container" style={{ "text-align": "center" }}>
@@ -315,8 +326,9 @@ const Profile = () => {
             </ul>
           </Col>
         </header>
-      </div></>
+      </div>
+    )}
+    </>
   );
-};
-
+}
 export default Profile;

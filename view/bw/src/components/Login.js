@@ -48,9 +48,9 @@ const Login = () => {
       form.current.validateAll();
   
       if (checkBtn.current.context._errors.length === 0) {
-        const res = await AuthService.login(email, password).then(
+        await AuthService.login(email, password).then(
           () => {
-            console.log('res.token')
+
             navigate("/Profile");
             window.location.reload();
           },
