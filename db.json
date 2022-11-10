@@ -54,6 +54,25 @@
       "salt": "$2a$10$XvIrIfFoS2q/WQUUjF.8Xe",
       "phone": "555-555-5555",
       "address": "6235 Hungerford st"
+    },
+    {
+      "_id": "LK0cd8pQq",
+      "guid": "GU0-Vnz7i3ZcA3",
+      "isActive": true,
+      "balance": "$0.00",
+      "picture": "https://randomuser.me/api/portraits/women/49.jpg",
+      "age": "21",
+      "eyeColor": "Red",
+      "name": {
+        "first": "Tim",
+        "last": "Doe"
+      },
+      "company": "Blue White",
+      "email": "Johndoe@gmail.com",
+      "password": "$2a$10$boOlL3IzLHiA3afMShLRueRVJaq9BkcihnGt6pQ5XMD04L68mcguy",
+      "salt": "$2a$10$boOlL3IzLHiA3afMShLRue",
+      "phone": "5622347161",
+      "address": "1500 South Fremont Avenue"
     }
   ]
 }

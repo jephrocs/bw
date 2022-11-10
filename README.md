@@ -8,6 +8,7 @@ npm run dev
 
 To start react (front end):
 cd view/bw
+npm i
 npm start
 
 ## Details
